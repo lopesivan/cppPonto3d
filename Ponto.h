@@ -18,7 +18,7 @@ private:
 public:
     Ponto () = default;
 
-    explicit Ponto ( T coords[dim] )
+    explicit Ponto (T coords[dim] )
     {
         for (int index = 0; index < dim; index++)
             _coords[index] = coords[index];
