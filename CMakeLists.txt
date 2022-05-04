@@ -10,4 +10,4 @@ file(GLOB HEADER_FILES "*.h")
 include_directories(inc)
 
 # your app
-add_executable(cppPonto2d ${SOURCE_FILES} ${HEADER_FILES})
+add_executable(main ${SOURCE_FILES} ${HEADER_FILES})
