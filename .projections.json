@@ -1,5 +1,6 @@
 {
   "./.projections.json": { "type": "dit" },
+  "./.yabs": { "type": "build" },
 
   "README.md": {
     "type": "doc"
@@ -19,8 +20,9 @@
 
   "*.cpp": {
     "type": "s",
+    "run": "!./{}",
     "make": "make %<",
-    "dispatch": "./%<",
+    "dispatch": "make clean",
     "alternate": "inc/{}.h"
   },
 
