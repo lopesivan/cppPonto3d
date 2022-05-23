@@ -10,4 +10,7 @@ file(GLOB HEADER_FILES "*.h")
 include_directories(inc)
 
 # your app
-add_executable(main ${SOURCE_FILES} ${HEADER_FILES})
+add_executable(cppPonto3d ${SOURCE_FILES} ${HEADER_FILES})
+
+# installer
+install(TARGETS ${PROJECT_NAME} DESTINATION bin)
