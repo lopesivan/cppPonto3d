@@ -1,36 +1,52 @@
 -- programa em lua
+--
+local cmake_args =
+	"--no-warn-unused-cli -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -DCMAKE_BUILD_TYPE:STRING=Debug -G Ninja"
+local program_name = "cppPonto3d"
+
 return {
 	tasks = {
 
 		run = {
-			command = "./main",
+			command = string.format("./%s", program_name),
 			condition = require("yabs.conditions").file_exists("CMakeLists.txt"),
 			output = "quickfix",
 		},
 
 		clean = {
 			command = function()
-				require ('yabs').languages.make:run_task('clean')
+				require("yabs").languages.make:run_task("clean")
 			end,
 			condition = require("yabs.conditions").file_exists("Makefile"),
 			output = "quickfix",
-			type="lua"
+			type = "lua",
 		},
 
 		bear = {
 			command = function()
-				require ('yabs').languages.make:run_task('bear')
+				require("yabs").languages.make:run_task("bear")
 			end,
 			condition = require("yabs.conditions").file_exists("Makefile"),
 			output = "quickfix",
-			type="lua"
+			type = "lua",
 		},
 
 		valgrind = {
-			command = "valgrind ./main",
+			command = string.format("valgrind ./%s", program_name),
 			condition = require("yabs.conditions").file_exists("CMakeLists.txt"),
 			output = "quickfix",
 		},
 
+		cmake = {
+			command = string.format("cmake %s", cmake_args),
+			condition = require("yabs.conditions").file_exists("CMakeLists.txt"),
+			output = "quickfix",
+		},
+
+		ninja = {
+			command = string.format("%s", "ninja"),
+			condition = require("yabs.conditions").file_exists("CMakeLists.txt"),
+			output = "quickfix",
+		},
 	},
 }
