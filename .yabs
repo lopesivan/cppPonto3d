@@ -15,7 +15,7 @@ return {
 
 		clean = {
 			command = function()
-				require("yabs").languages.make:run_task("clean")
+				require("yabs"):run_task("make clean")
 			end,
 			condition = require("yabs.conditions").file_exists("Makefile"),
 			output = "quickfix",
